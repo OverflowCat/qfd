@@ -26,3 +26,86 @@ td {
     font-weight     : bold;
     background-color: #f4f4f4;
 }
+
+td.na {
+    background-color: #f4f4f4;
+}
+
+.house {
+    position          : relative;
+    margin-block-start: 15em;
+    --cell-size       : 4em;
+    --sqrt-cell-size  : 2.828em;
+    --table-offset    : -14.14em;
+}
+
+.house * {
+    box-sizing: border-box;
+}
+
+.house table {
+    margin     : 0;
+    inline-size: auto;
+}
+
+table.f {
+    position        : absolute;
+    inline-size     : auto;
+    top             : var(--table-offset);
+    transform-origin: bottom left;
+    transform       : translateX(7em) rotate(45deg);
+    z-index         : -1;
+}
+
+.header-row>.技术手段 {
+    inline-size: var(--cell-size);
+}
+
+table.f tr td {
+    width : var(--sqrt-cell-size);
+    height: var(--sqrt-cell-size);
+}
+
+.header-row td {
+    inline-size: 3em;
+}
+
+tr.e td {
+    height: 1.5em;
+}
+
+.house button {
+    background: none;
+    border    : none;
+    margin: 0;
+    padding: auto;
+    height: 100%;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.house td:has(button) {
+    padding: 0;
+}
+
+.house table.f button div {
+    transform: rotate(-45deg);
+}
+
+.house td:has(button):hover {
+    background-color: #dfe7dfdd;
+}
+
+.house table.f .disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+td.wide {
+    inline-size: 4em;
+}
+
+.header-row>.竞争者评价 {
+    /* equal width */
+    inline-size: 8%;
+}
