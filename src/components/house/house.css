@@ -9,7 +9,11 @@ td {
     border        : 1px solid black;
     text-align    : center;
     vertical-align: middle;
-    padding       : 8px;
+    width         : 3em;
+}
+
+tr {
+    line-height: 2em;
 }
 
 .header-row td {
@@ -74,17 +78,51 @@ tr.e td {
     height: 1.5em;
 }
 
+button,
+input,
+label {
+    user-select: none;
+    transition : background .1s ease-in-out;
+}
+
+.house input[type="checkbox"] {
+    width : 0;
+    height: 0;
+    margin: 0;
+}
+
+.house input[type="checkbox"]+label {
+    margin            : 0;
+    padding           : 2px;
+    margin-block-start: 2px;
+    margin-block-end  : 2px;
+    color             : transparent;
+}
+
+.house input[type="checkbox"]+label:hover {
+    color: #444;
+}
+
+.house input[type="checkbox"]:focus+label {
+    outline: 2px dotted;
+}
+
+.house input[type="checkbox"]:checked+label {
+    background: #52c0527c;
+    color     : black;
+}
+
 .house button {
     background: none;
     border    : none;
-    margin: 0;
-    padding: auto;
-    height: 100%;
-    width: 100%;
-    font-size: 1.2em;
+    margin    : 0;
+    padding   : auto;
+    height    : 100%;
+    width     : 100%;
+    font-size : 1.2em;
 }
 
-.house td:has(button) {
+.house td:has(:is(button, textarea)) {
     padding: 0;
 }
 
@@ -98,7 +136,15 @@ tr.e td {
 
 .house table.f .disabled {
     pointer-events: none;
-    cursor: not-allowed;
+    cursor        : not-allowed;
+}
+
+textarea {
+    resize    : none;
+    width     : 100%;
+    min-height: 6em;
+    overflow  : hidden;
+    margin    : 0;
 }
 
 td.wide {

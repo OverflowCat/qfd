@@ -29,8 +29,6 @@ const 竞争者评价 = toRateData([
   ["", "X", "", "AB", ""],
 ]);
 
-console.log(竞争者评价);
-
 export default component$(() => {
   const data = useStore({
     技术手段: ["低电耗", "自动聚焦", "大容量电池", "外壳", "折叠屏"],
@@ -47,6 +45,13 @@ export default component$(() => {
     用户需求权重: [2, 3, 1, 4],
     竞争者评价分制: 5,
     竞争者评价,
+    技术评估: toRateData([
+      ["", "", "A", "B", "X"],
+      ["", "X", "", "AB", ""],
+      ["B", "X", "", "A", ""],
+      ["XA", "", "", "B", ""],
+      ["", "", "A", "B", "X"],
+    ]),
   });
 
   return (

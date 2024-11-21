@@ -8,8 +8,11 @@ interface Data {
   竞争者评价: {
     [key: string]: boolean;
   }[][];
+  技术评估: {
+    [key: string]: boolean;
+  }[][];
   技术相关性: number[][];
-  程度符号: Array<string | false>;
+  程度符号: Array<string | boolean>;
   关系矩阵: Array<Array<number>>;
 }
 
@@ -162,14 +165,13 @@ export const House = component$((props: { data: Data }) => {
               {data.竞争者评价[i].map((item, j) => (
                 <Rater
                   key={"rater-" + i + "-" + j}
-                  _key={i + "-" + j}
+                  _key={"competitor-" + i + "-" + j}
                   data={data.竞争者评价[i][j]}
                   handler={$((firm: string, check: boolean) => {
                     // 确保当前行其余所有数据都为 false
-                    console.log(firm, check);
                     if (check)
                       for (let k = 0; k < data.竞争者评价[i].length; k++)
-                        if (k !== j) data.竞争者评价[i][k][firm] = false;
+                        data.竞争者评价[i][k][firm] = k == j;
                   })}
                 ></Rater>
               ))}
@@ -182,52 +184,36 @@ export const House = component$((props: { data: Data }) => {
             ))}
             <td rowSpan={7} colSpan={5} class="na"></td>
           </tr>
-          <tr>
-            <td rowSpan={5}>技术评估（五分制）</td>
-            <td>5</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td> <td></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td></td>
-            <td></td>
-            <td></td> <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td> <td></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td></td>
-            <td></td>
-            <td></td> <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td></td>
-            <td></td>
-            <td></td> <td></td>
-            <td></td>
-          </tr>
-
+          {Array.from({ length: 5 })
+            .map((_, i) => 5 - 1 - i)
+            .map((技术, i) => (
+              <tr key={"tr-eva-" + i}>
+                {i === 0 && <td rowSpan={5}>技术评估（五分制）</td>}
+                <td>{技术 + 1}</td>
+                {data.技术评估.map((row, i) => (
+                  <Rater
+                    key={"t-rater-" + 技术 + "-" + i}
+                    _key={"teva-" + 技术 + "-" + i}
+                    data={row[技术]}
+                    handler={$((firm: string, check: boolean) => {
+                      // 确保当前行其余所有数据都为 false
+                      if (check)
+                        for (let k = 0; k < data.技术评估[i].length; k++)
+                          data.技术评估[i][k][firm] = k == 技术;
+                    })}
+                  ></Rater>
+                ))}
+              </tr>
+            ))}
           <tr>
             <td colSpan={2} class="title-row">
               产品目标
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            {data.技术手段.map((item, i) => (
+              <td key={"product-" + i}>
+                <textarea></textarea>
+              </td>
+            ))}
           </tr>
         </tbody>
       </table>
