@@ -1,15 +1,10 @@
-# Qwik Library ⚡️
+# `qfd` ⚡️
 
-- [Qwik Docs](https://qwik.dev/)
-- [Discord](https://qwik.dev/chat)
-- [Qwik on GitHub](https://github.com/QwikDev/qwik)
-- [@QwikDev](https://twitter.com/QwikDev)
-- [Vite](https://vitejs.dev/)
-- [Partytown](https://partytown.builder.io/)
-- [Mitosis](https://github.com/BuilderIO/mitosis)
-- [Builder.io](https://www.builder.io/)
+> Draw a House of Quality in Quality Function Deployment.
 
----
+## Usage
+
+See [`root.tsx`](/src/root.tsx).
 
 ## Project Structure
 

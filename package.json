@@ -1,10 +1,23 @@
 {
-  "name": "my-qwik-library-name",
+  "name": "qfd",
   "version": "0.0.1",
-  "description": "Create a Qwik library",
+  "description": "House of quality in quality function deployment",
   "main": "./lib/index.qwik.mjs",
   "qwik": "./lib/index.qwik.mjs",
   "types": "./lib-types/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/overflowcat/qfd.git"
+  },
+  "author": {
+    "email": "overflowcat@gmail.com",
+    "name": "overflowcat",
+    "url": "https://about.overflow.cat/"
+  },
+  "keywords": [
+    "quality"
+  ],
   "exports": {
     ".": {
       "import": "./lib/index.qwik.mjs",
